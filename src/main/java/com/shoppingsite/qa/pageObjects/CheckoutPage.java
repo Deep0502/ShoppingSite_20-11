@@ -3,10 +3,12 @@ package com.shoppingsite.qa.pageObjects;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Reporter;
 
 import com.shoppingsite.qa.base.TestBase;
 
@@ -40,7 +42,7 @@ public class CheckoutPage extends TestBase{
 	@CacheLookup
 	WebElement submitBtn;
 	
-	@FindBy(id="otp")
+	@FindBy(xpath="//label[@id='otp']")
 	@CacheLookup
 	WebElement otpBtn;
 	
@@ -67,6 +69,7 @@ public class CheckoutPage extends TestBase{
 		   }
 		}
 		catch(ArithmeticException e){
+			Reporter.log("Exception in checkfinalAmount");
 			System.out.print("Exception in checkfinalAmount");
 		}
 		return isAmountMatch;

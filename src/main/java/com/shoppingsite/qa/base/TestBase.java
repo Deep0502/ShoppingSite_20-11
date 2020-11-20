@@ -10,6 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
+import org.testng.annotations.Parameters;
 
 import com.shoppingsite.qa.util.TestUtil;
 import com.shoppingsite.qa.util.TestListener;
@@ -32,23 +33,20 @@ public class TestBase {
 				
 			}
 	 }
-	 public static void initialization() {
-		   String browsername =	prop.getProperty("browser");
-		   if(browsername.equals("chrome")) {
+	 @Parameters("myBrowser")
+	 public static void initialization(String myBrowser) {
+		  // String browsername =	prop.getProperty("browser");
+		   if(myBrowser.equals("chrome")) {
 			   ChromeOptions opt = new ChromeOptions();
 			   opt.addArguments("start-maximized");
 			   opt.addArguments("--disable-notifications--");
 			   opt.addArguments("--disable-infobars");
-			   System.setProperty("webdriver.chrome.driver", "/Users/Spurious/Downloads/chromedriver_win32/chromedriver.exe");
+			   System.setProperty("webdriver.chrome.driver", "/Users/Spurious/eclipse-workspace/ShoppingSiteTest/chromedriver.exe");
 		       driver = new ChromeDriver(opt);
 		   }
-		   
-		 
-		   e_driver = new EventFiringWebDriver(driver);
-			// Now create object of EventListerHandler to register it with EventFiringWebDriver
-			eventListener = new TestListener();
-			driver = e_driver;
-		   
+		   else if(myBrowser.equals("firefox")){
+			   System.setProperty("webdriver.gecko.driver","/Users/Spurious/eclipse-workspace/ShoppingSiteTest/geckodriver.exe");
+		   }
 		   
 		   driver.manage().window().maximize();
 		   driver.manage().timeouts().pageLoadTimeout(TestUtil.PAGE_LOAD_TIMEOUT,TimeUnit.SECONDS);

@@ -27,7 +27,7 @@ public class SearchPageTest extends TestBase{
 	
 	@BeforeMethod
 	public void setUp() {
-		initialization();
+		//initialization();
 	    loginPage = new LoginPage();
 	   searchPage=loginPage.login(prop.getProperty("username"),prop.getProperty("password"));
 	   checkoutPage = new CheckoutPage();
