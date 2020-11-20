@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="shopping site test framework">
+   <test name ="shopping site tests" parallel="methods" thread-count="2">
+     <classes>
+       <class name="com.shoppingsite.qa.tests.LoginPageTest"></class>
+       <class name="com.shoppingsite.qa.tests.SearchPageTest"></class>
+       <class name="com.shoppingsite.qa.tests.CheckoutPageTest"></class>
+     </classes>
+   </test>
+</suite>
