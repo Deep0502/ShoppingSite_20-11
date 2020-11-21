@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<suite name="shopping site test framework">
-   <test name ="shopping site tests" parallel="methods" thread-count="2">
+<suite name="shopping site test framework" parallel="tests" thread-count="2">
+ <listeners>
+      <listener class-name="com.shoppingsite.qa.util.TestListener"/>
+      <listener class-name="com.shoppingsite.qa.util.AnnotationsTransformer"/>
+  </listeners>
+  <test name ="ParallelTest1 Browser Chrome">
+    <parameter name ="myBrowser" value ="chrome"></parameter>
+     <classes>
+       <class name="com.shoppingsite.qa.tests.LoginPageTest"></class>
+       <class name="com.shoppingsite.qa.tests.SearchPageTest"></class>
+       <class name="com.shoppingsite.qa.tests.CheckoutPageTest"></class>
+     </classes>
+   </test>
+   <test name ="ParallelTest2 Browser Firefox">
+    <parameter name ="myBrowser" value ="firefox"></parameter>
      <classes>
        <class name="com.shoppingsite.qa.tests.LoginPageTest"></class>
        <class name="com.shoppingsite.qa.tests.SearchPageTest"></class>
